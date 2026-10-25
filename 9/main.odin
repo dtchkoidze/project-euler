@@ -41,7 +41,7 @@ product_of_triplet_with_sum_of_n :: proc(n: u64) -> u64 {
 		for j: u64 = 1; j < k; j += 1 {
 			a, b, c, ok = #force_inline yield_triplet(k, j)
 			if !ok {
-				fmt.printfln("ok will overflow u64 continue outer")
+				fmt.printfln("ok will overflow u64 break outer")
 				break outer
 			}
 			sum := #force_inline sum_triplet(a, b, c)
