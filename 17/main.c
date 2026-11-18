@@ -121,10 +121,36 @@ int char_count_of(int n) {
 }
 
 
+int char_count_of_proper(int n) {
+    assert(n >= 0 && n <= 1000);
+
+    if (n == 1000) {
+        return l20[1] + THOUSAND_LETTER_N;
+    }
+
+    if (n <= 20) {
+        return l20[n];
+    }
+
+    if (n < 100) {
+        int ones = n % 10;
+        return t[n / 10] + (ones == 0 ? 0 : l20[ones]);
+    }
+
+    int remainder = n % 100;
+    int count = l20[n / 100] + HUNDRED_LETTER_N;
+
+    if (remainder != 0) {
+        count += AND_LETTER_N + char_count_of(remainder);
+    }
+
+    return count;
+}
+
 uint64_t sum_of_letter_ns_below(int n) {
     uint64_t sum = 0;
     for (int i = 1; i <= n; i++) {
-        sum += (uint64_t)char_count_of(i);
+        sum += (uint64_t)char_count_of_proper(i);
     }
     return sum;
 }
