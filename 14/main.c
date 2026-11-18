@@ -21,7 +21,7 @@ u64 n_with_longest_collatz_chain_under_n(u64 n) {
         u64 chain_len = 1;
         while (sn != 1) {
             {//this is actuall function def
-                if ((sn &  1) == 0) {
+                if ((sn & 1) == 0) {
                     sn /= 2;
                     chain_len += 1;
                 } else {
